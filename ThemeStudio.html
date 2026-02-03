@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Studio UI Kit  (Merged Master)</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@300;400;600;700&family=Merriweather:wght@300;400;700&family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div id="sidebar">
+    <div class="sidebar-header">
+        <div class="logo"><i class="ri-brush-2-fill"></i> Theme<span>Studio</span> <span style="font-size:0.5em; background:#f1f5f9; padding:2px 5px; border-radius:4px; color:#64748b; margin-left:5px;">V1</span></div>
+    </div>
+
+    <div class="nav-tabs">
+        <button class="nav-btn active" onclick="switchPanel(1)">Theme</button>
+        <button class="nav-btn" onclick="switchPanel(2)">Library</button>
+        <button class="nav-btn" onclick="switchPanel(3)">Settings</button>
+    </div>
+
+    <!-- THEME PANEL (EXPANDED) -->
+    <div id="panel-theme" class="panel-section active">
+        <h2 class="panel-title">Global Styles</h2>
+
+        <div class="panel-group-title"><i class="ri-palette-line"></i> COLORS & APPEARANCE</div>
+        <div class="control-group" style="display:flex; align-items:center; justify-content:space-between;">
+            <label class="control-label" style="margin:0;">Primary Color</label>
+            <input type="color" id="theme-primary" value="#6366f1" oninput="updateTheme()">
+        </div>
+        <div class="control-group">
+            <label class="control-label">Surface Mode</label>
+            <select id="theme-surface" class="u-select" onchange="updateTheme()">
+                <option value="light">Light (Clean)</option>
+                <option value="dark">Dark (Modern)</option>
+            </select>
+        </div>
+
+        <div class="panel-group-title"><i class="ri-text"></i> TYPOGRAPHY</div>
+        <div class="control-group">
+            <label class="control-label">Font Family</label>
+            <select id="theme-font" class="u-select" onchange="updateTheme()">
+                <option value="'Plus Jakarta Sans', sans-serif">Jakarta Sans (Modern)</option>
+                <option value="'Inter', sans-serif">Inter (Standard)</option>
+                <option value="'Roboto', sans-serif">Roboto (Android)</option>
+                <option value="'Open Sans', sans-serif">Open Sans (Neutral)</option>
+                <option value="'Poppins', sans-serif">Poppins (Friendly)</option>
+                <option value="'Playfair Display', serif">Playfair (Elegant)</option>
+                <option value="'Merriweather', serif">Merriweather (Classic)</option>
+                <option value="'Roboto Mono', monospace">Roboto Mono (Code)</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Base Size: <span id="lbl-size">16px</span></label>
+            <input type="range" id="theme-size" class="u-input" min="12" max="20" value="16" oninput="updateTheme()">
+        </div>
+        <div class="grid-2" style="gap:10px;">
+            <div class="control-group" style="margin:0;">
+                <label class="control-label">Body Weight</label>
+                <select id="theme-weight-body" class="u-select" onchange="updateTheme()">
+                    <option value="300">Light</option>
+                    <option value="400" selected>Regular</option>
+                    <option value="500">Medium</option>
+                </select>
+            </div>
+            <div class="control-group" style="margin:0;">
+                <label class="control-label">Head Weight</label>
+                <select id="theme-weight-head" class="u-select" onchange="updateTheme()">
+                    <option value="500">Medium</option>
+                    <option value="600">SemiBold</option>
+                    <option value="700" selected>Bold</option>
+                    <option value="800">Extra</option>
+                </select>
+            </div>
+        </div>
+        <div class="control-group" style="margin-top:10px;">
+            <label class="control-label">Line Height: <span id="lbl-lh">1.6</span></label>
+            <input type="range" id="theme-lh" class="u-input" min="10" max="20" value="16" oninput="updateTheme()">
+        </div>
+
+        <div class="panel-group-title"><i class="ri-shape-line"></i> BORDER & SHADOW</div>
+        <div class="control-group">
+            <label class="control-label">Card Radius: <span id="lbl-radius">8px</span></label>
+            <input type="range" id="theme-radius" class="u-input" min="0" max="24" value="8" oninput="updateTheme()">
+        </div>
+        <div class="control-group">
+            <label class="control-label">Border Width: <span id="lbl-border">1px</span></label>
+            <input type="range" id="theme-border-w" class="u-input" min="0" max="4" value="1" oninput="updateTheme()">
+        </div>
+        <div class="control-group" style="display:flex; align-items:center; justify-content:space-between;">
+            <label class="control-label" style="margin:0;">Border Color</label>
+            <input type="color" id="theme-border-col" value="#e2e8f0" oninput="updateTheme()">
+        </div>
+        <div class="control-group">
+            <label class="control-label">Shadow Depth</label>
+            <select id="theme-shadow" class="u-select" onchange="updateTheme()">
+                <option value="none">None (Flat)</option>
+                <option value="sm" selected>Small (Subtle)</option>
+                <option value="md">Medium (Card)</option>
+                <option value="lg">Large (Float)</option>
+                <option value="xl">X-Large (Elevated)</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- LIBRARY PANEL -->
+    
+<div id="panel-library" class="panel-section">
+    <h2 class="panel-title">Master Library (200+)</h2>
+    <input id="lib-search" class="u-input" placeholder="Search everything..." style="margin-top:12px;" oninput="filterLibrary()">
+
+    <div style="margin:15px 0; padding:10px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:6px; font-size:0.8rem; color:#166534;">
+        <i class="ri-stack-fill"></i> <strong>Collection:</strong>
+    </div>
+
+    <div class="cat-title" onclick="toggleList(this)">1. Marketing & Landing <span>+</span></div>
+    <div class="comp-list" style="display:grid;">
+        <div class="comp-btn" onclick="addTpl('fe_hero_text')"><i class="ri-heading"></i> Big Hero</div>
+        <div class="comp-btn" onclick="addTpl('hero_classic')"><i class="ri-layout-top-line"></i> Classic Hero</div>
+        <div class="comp-btn" onclick="addTpl('hero_split')"><i class="ri-layout-column-line"></i> Split Hero</div>
+        <div class="comp-btn" onclick="addTpl('hero_saas')"><i class="ri-macbook-line"></i> SaaS Hero</div>
+        <div class="comp-btn" onclick="addTpl('hero_app')"><i class="ri-smartphone-line"></i> App Hero</div>
+        <div class="comp-btn" onclick="addTpl('hero_video')"><i class="ri-movie-fill"></i> Video Hero</div>
+        <div class="comp-btn" onclick="addTpl('hero_gradient')"><i class="ri-brush-fill"></i> Gradient Hero</div>
+        <div class="comp-btn" onclick="addTpl('fe_logo_strip')"><i class="ri-vip-crown-line"></i> Trust Logos</div>
+        <div class="comp-btn" onclick="addTpl('mkt_logo_cloud')"><i class="ri-cloud-line"></i> Logo Cloud</div>
+        <div class="comp-btn" onclick="addTpl('fe_feature_check')"><i class="ri-checkbox-circle-line"></i> Feat Split</div>
+        <div class="comp-btn" onclick="addTpl('mkt_features_zig')"><i class="ri-arrow-left-right-line"></i> ZigZag Feat</div>
+        <div class="comp-btn" onclick="addTpl('fe_pricing_3')"><i class="ri-price-tag-3-line"></i> Pricing 3</div>
+        <div class="comp-btn" onclick="addTpl('mkt_pricing_3')"><i class="ri-price-tag-3-line"></i> Pricing Table</div>
+        <div class="comp-btn" onclick="addTpl('mkt_team_grid')"><i class="ri-team-line"></i> Team Grid</div>
+        <div class="comp-btn" onclick="addTpl('mkt_testi_grid')"><i class="ri-chat-smile-line"></i> Testimonials</div>
+        <div class="comp-btn" onclick="addTpl('mkt_cta_banner')"><i class="ri-megaphone-line"></i> CTA Banner</div>
+        <div class="comp-btn" onclick="addTpl('fe_faq_grid')"><i class="ri-question-answer-line"></i> FAQ Grid</div>
+        <div class="comp-btn" onclick="addTpl('fe_newsletter_minimal')"><i class="ri-mail-send-line"></i> News Dark</div>
+    </div>
+
+    <div class="cat-title" onclick="toggleList(this)">2. SaaS & Dashboard <span>+</span></div>
+    <div class="comp-list" style="display:grid;">
+        <div class="comp-btn" onclick="addTpl('dash_stats')"><i class="ri-layout-grid-line"></i> Stats Grid</div>
+        <div class="comp-btn" onclick="addTpl('stat_row')"><i class="ri-bar-chart-fill"></i> Stats Row</div>
+        <div class="comp-btn" onclick="addTpl('stat_card')"><i class="ri-pie-chart-fill"></i> Big Stat</div>
+        <div class="comp-btn" onclick="addTpl('dash_table')"><i class="ri-table-line"></i> Data Table</div>
+        <div class="comp-btn" onclick="addTpl('table_zebra')"><i class="ri-table-line"></i> Zebra Table</div>
+        <div class="comp-btn" onclick="addTpl('dash_kanban')"><i class="ri-trello-line"></i> Kanban</div>
+        <div class="comp-btn" onclick="addTpl('dash_profile_head')"><i class="ri-user-card-line"></i> Profile Head</div>
+        <div class="comp-btn" onclick="addTpl('dash_file_grid')"><i class="ri-folder-open-line"></i> File Manager</div>
+        <div class="comp-btn" onclick="addTpl('dash_activity')"><i class="ri-list-check"></i> Activity Log</div>
+        <div class="comp-btn" onclick="addTpl('timeline_vert')"><i class="ri-time-line"></i> Timeline V</div>
+        <div class="comp-btn" onclick="addTpl('timeline_horiz')"><i class="ri-history-line"></i> Timeline H</div>
+        <div class="comp-btn" onclick="addTpl('nav_sidebar_viz')"><i class="ri-layout-left-line"></i> Sidebar Layout</div>
+        <div class="comp-btn" onclick="addTpl('drawer_viz')"><i class="ri-side-bar-line"></i> Drawer Viz</div>
+    </div>
+
+    <div class="cat-title" onclick="toggleList(this)">3. E-Commerce Pro <span>+</span></div>
+    <div class="comp-list" style="display:grid;">
+        <div class="comp-btn" onclick="addTpl('shop_product_page')"><i class="ri-shopping-bag-3-line"></i> Product Detail</div>
+        <div class="comp-btn" onclick="addTpl('shop_grid')"><i class="ri-grid-fill"></i> Product Grid</div>
+        <div class="comp-btn" onclick="addTpl('shop_wide')"><i class="ri-shopping-cart-line"></i> Wide Item</div>
+        <div class="comp-btn" onclick="addTpl('shop_cart_summ')"><i class="ri-receipt-line"></i> Cart Summary</div>
+        <div class="comp-btn" onclick="addTpl('shop_filter_bar')"><i class="ri-filter-3-line"></i> Filter Sidebar</div>
+        <div class="comp-btn" onclick="addTpl('shop_cat_circles')"><i class="ri-donut-chart-line"></i> Cat Circles</div>
+        <div class="comp-btn" onclick="addTpl('shop_categories')"><i class="ri-layout-4-line"></i> Cat Cards</div>
+        <div class="comp-btn" onclick="addTpl('shop_review_row')"><i class="ri-chat-quote-line"></i> Review Item</div>
+        <div class="comp-btn" onclick="addTpl('review_summary')"><i class="ri-star-half-line"></i> Review Sum</div>
+        <div class="comp-btn" onclick="addTpl('card_glass')"><i class="ri-blur-off-line"></i> Glass Card</div>
+        <div class="comp-btn" onclick="addTpl('card_image_full')"><i class="ri-image-line"></i> Img Card</div>
+        <div class="comp-btn" onclick="addTpl('price_toggle')"><i class="ri-price-tag-3-line"></i> Price Toggle</div>
+        <div class="comp-btn" onclick="addTpl('cookie_banner')"><i class="ri-cookie-line"></i> Cookie</div>
+    </div>
+
+    <div class="cat-title" onclick="toggleList(this)">4. Blog & Content <span>+</span></div>
+    <div class="comp-list" style="display:grid;">
+        <div class="comp-btn" onclick="addTpl('fe_blog_feat')"><i class="ri-article-line"></i> Feat Post</div>
+        <div class="comp-btn" onclick="addTpl('fe_author_box')"><i class="ri-user-smile-line"></i> Author</div>
+        <div class="comp-btn" onclick="addTpl('fe_gallery_grid')"><i class="ri-gallery-line"></i> Gallery</div>
+        <div class="comp-btn" onclick="addTpl('fe_project_card')"><i class="ri-briefcase-line"></i> Project</div>
+        <div class="comp-btn" onclick="addTpl('feat_bento')"><i class="ri-layout-masonry-line"></i> Bento Grid</div>
+        <div class="comp-btn" onclick="addTpl('feat_tabs')"><i class="ri-folder-line"></i> Tabs</div>
+        <div class="comp-btn" onclick="addTpl('feat_accordion')"><i class="ri-menu-add-line"></i> Accordion</div>
+        <div class="comp-btn" onclick="addTpl('feat_large_icon')"><i class="ri-focus-3-line"></i> Focus Icon</div>
+        <div class="comp-btn" onclick="addTpl('feat_grid_4')"><i class="ri-grid-fill"></i> Grid 4</div>
+    </div>
+
+    <div class="cat-title" onclick="toggleList(this)">5. Forms & UI <span>+</span></div>
+    <div class="comp-list" style="display:grid;">
+        <div class="comp-btn" onclick="addTpl('form_login')"><i class="ri-login-box-line"></i> Login Simple</div>
+        <div class="comp-btn" onclick="addTpl('form_login_split')"><i class="ri-login-circle-line"></i> Login Split</div>
+        <div class="comp-btn" onclick="addTpl('form_contact')"><i class="ri-mail-send-line"></i> Contact Simple</div>
+        <div class="comp-btn" onclick="addTpl('form_contact_map')"><i class="ri-map-pin-line"></i> Contact Map</div>
+        <div class="comp-btn" onclick="addTpl('form_search')"><i class="ri-search-line"></i> Search Bar</div>
+        <div class="comp-btn" onclick="addTpl('form_toggle')"><i class="ri-toggle-line"></i> Toggles</div>
+        <div class="comp-btn" onclick="addTpl('form_file')"><i class="ri-upload-line"></i> File Upload</div>
+        <div class="comp-btn" onclick="addTpl('form_select')"><i class="ri-arrow-down-s-line"></i> Selects</div>
+        <div class="comp-btn" onclick="addTpl('ui_buttons')"><i class="ri-toggle-line"></i> Buttons</div>
+        <div class="comp-btn" onclick="addTpl('ui_alerts')"><i class="ri-alert-line"></i> Alerts</div>
+        <div class="comp-btn" onclick="addTpl('diff_view')"><i class="ri-compare-line"></i> Diff View</div>
+        <div class="comp-btn" onclick="addTpl('calendar_mock')"><i class="ri-calendar-line"></i> Calendar</div>
+    </div>
+
+    <div class="cat-title" onclick="toggleList(this)">6. Navigation & Footer <span>+</span></div>
+    <div class="comp-list" style="display:grid;">
+        <div class="comp-btn" onclick="addTpl('nav_simple')"><i class="ri-layout-top-line"></i> Nav Simple</div>
+        <div class="comp-btn" onclick="addTpl('nav_center')"><i class="ri-layout-top-line"></i> Nav Center</div>
+        <div class="comp-btn" onclick="addTpl('nav_transparent')"><i class="ri-layout-top-line"></i> Nav Dark</div>
+        <div class="comp-btn" onclick="addTpl('nav_logo_center')"><i class="ri-layout-top-line"></i> Nav Logo Mid</div>
+        <div class="comp-btn" onclick="addTpl('breadcrumbs')"><i class="ri-arrow-right-s-line"></i> Breadcrumbs</div>
+        <div class="comp-btn" onclick="addTpl('footer_simple')"><i class="ri-layout-bottom-line"></i> Footer S</div>
+        <div class="comp-btn" onclick="addTpl('footer_cols')"><i class="ri-layout-bottom-line"></i> Footer L</div>
+        <div class="comp-btn" onclick="addTpl('footer_mega')"><i class="ri-layout-bottom-line"></i> Footer Mega</div>
+        <div class="comp-btn" onclick="addTpl('footer_news')"><i class="ri-mail-line"></i> Footer News</div>
+        <div class="comp-btn" onclick="addTpl('pagination')"><i class="ri-pages-line"></i> Pagination</div>
+    </div>
+
+    <div class="cat-title" onclick="toggleList(this)">7. Mockups & Devices <span>+</span></div>
+    <div class="comp-list" style="display:grid;">
+        <div class="comp-btn" onclick="addTpl('mockup_browser')"><i class="ri-window-line"></i> Browser</div>
+        <div class="comp-btn" onclick="addTpl('mockup_window')"><i class="ri-macbook-line"></i> Window</div>
+        <div class="comp-btn" onclick="addTpl('mockup_phone')"><i class="ri-smartphone-line"></i> Phone</div>
+        <div class="comp-btn" onclick="addTpl('mockup_code')"><i class="ri-code-line"></i> Code</div>
+        <div class="comp-btn" onclick="addTpl('mockup_artboard')"><i class="ri-crop-line"></i> Artboard</div>
+        <div class="comp-btn" onclick="addTpl('mockup_stack')"><i class="ri-stack-line"></i> Stack</div>
+    </div>
+</div>
+
+
+    <!-- SETTINGS PANEL -->
+    <div id="panel-builder" class="panel-section">
+        <h2 class="panel-title">Data Source</h2>
+        <p class="u-small">Mock data loaded from templates.</p>
+        <button class="u-btn outline w-full" onclick="loadMockData()">Reload Data</button>
+        <hr style="border:0; border-top:1px solid #e2e8f0; margin: 20px 0;">
+        <div class="u-small">Version 23.0 (Master Merged)</div>
+    </div>
+</div>
+
+<div id="main">
+    <div id="builder-header">
+        <div class="flex-row gap-sm">
+            <button class="u-btn ghost" onclick="document.getElementById('builder-canvas').innerHTML='';toast('Canvas cleared')"><i class="ri-delete-bin-line"></i> Clear</button>
+        </div>
+        <div class="action-group">
+            <button class="u-btn" onclick="exportHTML()"><i class="ri-download-line"></i> Export HTML</button>
+        </div>
+    </div>
+
+    <div id="builder-canvas">
+        <div id="empty-msg" style="text-align:center; margin-top:100px; color:#94a3b8; display:flex; flex-direction:column; align-items:center;">
+            <div style="background:#f1f5f9; width:80px; height:80px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+                <i class="ri-layout-masonry-line" style="font-size:2.5rem; opacity:0.5;"></i>
+            </div>
+            <h3 style="color:#64748b; font-weight:600; margin:0;">Start Building</h3>
+            <p style="color:#94a3b8; max-width:250px;">Select a category on the left to browse and drag components.</p>
+        </div>
+    </div>
+</div>
+
+<div id="toast">Action completed</div>
+
+<div id="code-modal">
+    <div class="modal-box">
+        <div class="flex-between">
+            <h3 style="margin:0;">Component Code</h3>
+            <button onclick="document.getElementById('code-modal').style.display='none'" style="border:none; background:none; cursor:pointer;"><i class="ri-close-line"></i></button>
+        </div>
+        <div style="margin:10px 0; background:#f8fafc; padding:10px; border-radius:6px; font-size:0.9rem;">
+            <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
+                <input type="checkbox" id="chk-include-css" onchange="regenerateCode()"> 
+                <strong>Include Styles?</strong> (Wraps in &lt;style&gt; for standalone use)
+            </label>
+        </div>
+        <textarea id="code-text" readonly></textarea>
+        <div style="text-align:right;">
+            <button class="u-btn" onclick="copyCodeText()">Copy to Clipboard</button>
+        </div>
+    </div>
+</div>
+
+<div id="inspector">
+    <div class="flex-between" style="margin-bottom:15px;">
+        <h4 style="margin:0;">Inspector</h4>
+        <button onclick="document.getElementById('inspector').style.display='none'" style="border:none; background:none; cursor:pointer;"><i class="ri-close-line"></i></button>
+    </div>
+    <div id="group-text">
+        <label style="font-size:12px; display:block; margin-bottom:5px; font-weight:600; color:#64748b;">EDIT CONTENT</label>
+        <input id="ins-text" class="u-input" placeholder="Type here...">
+    </div>
+    <div id="group-href" style="display:none;">
+        <label style="font-size:12px; display:block; margin-bottom:5px; font-weight:600; color:#64748b;">LINK URL</label>
+        <input id="ins-href" class="u-input" placeholder="https://...">
+    </div>
+    <div id="group-src" style="display:none;">
+        <label style="font-size:12px; display:block; margin-bottom:5px; font-weight:600; color:#64748b;">IMAGE SOURCE</label>
+        <input id="ins-src" class="u-input" placeholder="https://...">
+    </div>
+</div>
+
+<script src="/script.js"  defer> </script>
+</body>
+</html>
